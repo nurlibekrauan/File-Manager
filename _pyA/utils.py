@@ -90,6 +90,29 @@ class FileManager:
             logging.warning(f"File {file_path} does not exist")
             return
         os.remove(file_path)
+    @staticmethod
+    def delete_directory(directory_name):
+        """
+        Удаляет указанную директорию и все её содержимое.
+        """
+        if not directory_name:
+            logging.error("Directory name cannot be empty")
+            return
+        if not os.path.exists(directory_name):
+            logging.warning(f"Directory {directory_name} does not exist")
+            return
+        try:
+            for root, dirs, files in os.walk(directory_name, topdown=False):
+                for file in files:
+                    os.remove(os.path.join(root, file))
+                for dir in dirs:
+                    os.rmdir(os.path.join(root, dir))
+            os.rmdir(directory_name)
+            logging.debug(f"Directory {directory_name} deleted")
+        except Exception as e:
+            logging.error(f"Error deleting directory {directory_name}: {str(e)}")
+
+
 
 # Пример использования
 if __name__ == "__main__":
