@@ -7,7 +7,8 @@ def menu():
         case 1:
             file_manager = FileManager()
             file_name = input("Enter the name of the file: ")
-            file_manager.create_file(file_name)
+            file_extention = input("Enter the exctension to the file: ")
+            file_manager.create_file(file_name,file_extension=file_extention)
         case 2:
             file_manager = FileManager()
             file_names = input("Enter the names of the files (separated by comma): ").split(',')
