@@ -1,7 +1,7 @@
 from _pyA.utils import FileManager
 
 def menu():
-    print("Creating files...\n1. Create file\n2. Create files\n3. Create directory\n4. Create directories\n5. Delete by path")
+    print("Creating files...\n1. Create file\n2. Create files\n3. Create directory\n4. Create directories\n5. Delete by path\b6. Delete directory")
     value = int(input("Enter the choise"))
     match value:
         case 1:
@@ -25,6 +25,10 @@ def menu():
             file_path = input("Enter the path to the file/directory: ")
             file_manager = FileManager()
             file_manager.delete_by_path(file_path)
+        case 6:
+            directory_path = input("Enter the path to the directory: ")
+            file_manager = FileManager()
+            file_manager.delete_directory(directory_path)
         case _:
             print("Invalid choice. Please try again.")
 if __name__ == '__main__':
